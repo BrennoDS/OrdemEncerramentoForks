@@ -22,7 +22,7 @@ Cada experimento cria **10 processos filhos** e registra:
 * tempo de espera;
 * ordem de término.
 
-Foram realizadas três baterias de testes, cada uma com **500 experimentos**:
+Foram realizadas três baterias de testes, cada uma com **150 experimentos**:
 
 1. **Tempo variável + semente aleatória**
    Cada processo recebe um tempo de `sleep()` diferente, utilizando uma semente baseada no horário atual do computador.
