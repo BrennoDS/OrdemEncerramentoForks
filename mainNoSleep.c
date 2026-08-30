@@ -20,26 +20,23 @@ int main(int argc, char *argv[])
     int experimento = atoi(argv[1]);
     Filho filhos[10];
     pid_t pids[10];
-    srand(time(NULL));
 
     printf("Experimento: %d\n", experimento);
     printf("Ordem Criação\n");
     for(int i=0; i<10; i++){
-        int sleep_time = 1 + (rand() % 20);
         pids[i] = fork();
         
          //Filho
         if(pids[i] > 0){
-            printf("%d: PID: %d(TEMPO: %d)\n ", i+1, pids[i], sleep_time);
+            printf("%d: PID: %d\n ", i+1, pids[i]);
             // printf("Processo pai %d criou o filho %d\n",getpid(),pids[i]);
             filhos[i].experimento = experimento;
             filhos[i].filho = i+1;
             filhos[i].pid = pids[i];
             filhos[i].ordem_criacao = i+1;
-            filhos[i].tempo = sleep_time;
+            filhos[i].tempo = 0;
 
         }else if(pids[i] == 0){
-            sleep(sleep_time);
             printf("Processo filho %d, PID: %d terminou\n",i+1, getpid());
             // printf("Processo filho %d, tempo: %d terminou\n",getpid(), sleep_time);
             exit(0);
@@ -84,7 +81,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    FILE *arquivo = fopen("resultados.csv", "a+");
+    FILE *arquivo = fopen("resultados_NoSleep.csv", "a+");
 
         if(arquivo == NULL){
         perror("Erro ao abrir o arquivo");

@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     int experimento = atoi(argv[1]);
     Filho filhos[10];
     pid_t pids[10];
-    srand(time(NULL));
+    srand(2580);
 
     printf("Experimento: %d\n", experimento);
     printf("Ordem Criação\n");
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    FILE *arquivo = fopen("resultados.csv", "a+");
+    FILE *arquivo = fopen("resultadosFixo.csv", "a+");
 
         if(arquivo == NULL){
         perror("Erro ao abrir o arquivo");
